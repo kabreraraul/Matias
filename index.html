@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bautizo de Matias - Safari</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --safari-green: #4CAF50;
+      --safari-dark-green: #2E7D32;
+      --safari-light-green: #8BC34A;
+      --safari-mint: #C8E6C9;
+      --safari-sand: #FFFDE7;
+      --safari-cream: #F9FBE7;
+      --safari-brown: #6D4C41;
+      --safari-gold: #D4AF37;
+    }
+    
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--safari-cream);
+      color: #5D4037;
+      overflow-x: hidden;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><path fill="%234CAF50" opacity="0.03" d="M20,20 C35,10 85,10 100,20 C115,30 115,85 100,95 C85,105 35,105 20,95 C5,85 5,30 20,20 Z"/><circle fill="%238BC34A" opacity="0.02" cx="30" cy="30" r="8"/><circle fill="%232E7D32" opacity="0.02" cx="90" cy="30" r="10"/><circle fill="%234CAF50" opacity="0.02" cx="60" cy="90" r="12"/></svg>');
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--safari-dark-green);
+      font-weight: 600;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      position: relative;
+      z-index: 10;
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(139, 195, 74, 0.2);
+    }
+
+    .section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: var(--safari-green);
+      border-radius: 2px;
+    }
+
+    .section-title i {
+      color: var(--safari-green);
+    }
+
+    .hero {
+      background: linear-gradient(rgba(46, 125, 50, 0.85), rgba(139, 195, 74, 0.8)), 
+                  url('https://i.etsystatic.com/21131517/r/il/52d9f1/2957127172/il_fullxfull.2957127172_54eh.jpg') center/cover no-repeat;
+      padding: 120px 20px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 80px;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="white" opacity="0.1" d="M0,0 L100,0 L100,100 L0,100 Z M10,10 L90,10 L90,90 L10,90 Z"/></svg>');
+      background-size: 100% 100%;
+    }
+
+    .hero h1 {
+      font-size: 3.2em;
+      animation: fadeInDown 1.2s ease;
+      color: white;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .hero p.lead {
+      font-size: 1.4em;
+      animation: fadeInUp 1.2s ease 0.5s both;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-img {
+      width: 180px;
+      border-radius: 50%;
+      border: 6px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      animation: zoomIn 1.5s ease;
+      margin-bottom: 30px;
+    }
+
+    .btn-safari {
+      background: var(--safari-green);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 32px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .btn-safari:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+      background: var(--safari-dark-green);
+      color: white;
+    }
+
+    /* Contador regresivo elegante */
+    .countdown-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      margin: 30px 0;
+      text-align: center;
+      border: 1px solid rgba(139, 195, 74, 0.2);
+    }
+
+    .countdown-title {
+      font-size: 1.6em;
+      color: var(--safari-dark-green);
+      margin-bottom: 25px;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .countdown-item {
+      background: white;
+      border-radius: 12px;
+      padding: 20px 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border: 1px solid rgba(139, 195, 74, 0.3);
+    }
+
+    .countdown-value {
+      font-size: 2.2em;
+      font-weight: 700;
+      color: var(--safari-green);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .countdown-label {
+      font-size: 0.85em;
+      color: var(--safari-brown);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    /* Carrusel elegante */
+    .carousel-container {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      margin-bottom: 50px;
+      border: 1px solid rgba(139, 195, 74, 0.2);
+    }
+
+    .carousel-item img {
+      height: 500px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .carousel-caption {
+      background: rgba(46, 125, 50, 0.8);
+      border-radius: 8px;
+      padding: 20px;
+      bottom: 30px;
+      left: 10%;
+      right: 10%;
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.7;
+      color: var(--safari-green);
+    }
+
+    .carousel-control-prev {
+      left: 20px;
+    }
+
+    .carousel-control-next {
+      right: 20px;
+    }
+
+    .carousel-control-prev:hover, .carousel-control-next:hover {
+      opacity: 1;
+      background: white;
+    }
+
+    .itinerary li {
+      font-size: 1.1em;
+      margin-bottom: 15px;
+      padding: 16px 20px;
+      border-radius: 10px;
+      background: rgba(200, 230, 201, 0.3);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .itinerary li:hover {
+      background: rgba(200, 230, 201, 0.5);
+    }
+
+    .itinerary li i {
+      color: var(--safari-green);
+      font-size: 1.1em;
+      width: 24px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 30px;
+      background: linear-gradient(135deg, var(--safari-dark-green), var(--safari-green));
+      color: white;
+      margin-top: 80px;
+      clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .list-group-item {
+      border: none;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 16px 0;
+      font-size: 1.1em;
+      display: flex;
+    }
+
+    .list-group-item:last-child {
+      border-bottom: none;
+    }
+
+    .list-group-item strong {
+      color: var(--safari-dark-green);
+      min-width: 150px;
+    }
+
+    .blockquote {
+      border-left: 3px solid var(--safari-green);
+      padding-left: 25px;
+      font-style: italic;
+      background: rgba(200, 230, 201, 0.2);
+      padding: 25px;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .blockquote-footer {
+      color: var(--safari-dark-green);
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Elementos decorativos naturales */
+    .natural-element {
+      position: fixed;
+      z-index: 1;
+      font-size: 35px;
+      color: var(--safari-green);
+      opacity: 0.3;
+    }
+
+    .element-1 { top: 15%; left: 5%; }
+    .element-2 { top: 25%; right: 5%; }
+    .element-3 { bottom: 20%; left: 5%; }
+    .element-4 { bottom: 30%; right: 5%; }
+
+    /* Music control */
+    .music-control {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--safari-green);
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      font-size: 1.2em;
+    }
+
+    .music-control:hover {
+      transform: scale(1.1);
+      background: var(--safari-dark-green);
+    }
+
+    /* Card styles for mentions */
+    .card-safari {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(139, 195, 74, 0.2);
+    }
+
+    .card-safari:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* Map container */
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      border: 1px solid rgba(139, 195, 74, 0.2);
+    }
+
+    /* Safari corner accents */
+    .corner-accent {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      z-index: 1;
+      opacity: 0.1;
+    }
+
+    .corner-tl {
+      top: 0;
+      left: 0;
+      background: radial-gradient(circle at top left, var(--safari-green), transparent 70%);
+    }
+
+    .corner-tr {
+      top: 0;
+      right: 0;
+      background: radial-gradient(circle at top right, var(--safari-light-green), transparent 70%);
+    }
+
+    .corner-bl {
+      bottom: 0;
+      left: 0;
+      background: radial-gradient(circle at bottom left, var(--safari-dark-green), transparent 70%);
+    }
+
+    .corner-br {
+      bottom: 0;
+      right: 0;
+      background: radial-gradient(circle at bottom right, var(--safari-green), transparent 70%);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5em;
+      }
+      
+      .hero {
+        padding: 80px 20px;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+      }
+      
+      .section {
+        padding: 30px 20px;
+      }
+      
+      .list-group-item {
+        flex-direction: column;
+      }
+      
+      .list-group-item strong {
+        min-width: auto;
+        margin-bottom: 5px;
+      }
+      
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .countdown-value {
+        font-size: 1.8em;
+      }
+      
+      .carousel-item img {
+        height: 300px;
+      }
+      
+      .natural-element, .corner-accent {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Esquinas decorativas -->
+  <div class="corner-accent corner-tl"></div>
+  <div class="corner-accent corner-tr"></div>
+  <div class="corner-accent corner-bl"></div>
+  <div class="corner-accent corner-br"></div>
+  
+  <!-- Elementos naturales decorativos -->
+  <div class="natural-element element-1">
+    <i class="fas fa-leaf"></i>
+  </div>
+  <div class="natural-element element-2">
+    <i class="fas fa-seedling"></i>
+  </div>
+  <div class="natural-element element-3">
+    <i class="fas fa-tree"></i>
+  </div>
+  <div class="natural-element element-4">
+    <i class="fas fa-feather-alt"></i>
+  </div>
+
+  <!-- Music control -->
+  <div class="music-control" id="musicControl">
+    <i class="fas fa-volume-up"></i>
+  </div>
+
+  <!-- Audio con música suave -->
+  <audio id="safariMusic" loop>
+    <source src="mati.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <img src="matiasprin.jpg" alt="MATI" class="hero-img">
+    <h1>Celebramos el Bautizo de Matias</h1>
+    <p class="lead">Una celebración llena de amor y bendiciones en nuestro safari especial</p>
+   </div>
+
+  <div class="container py-5" style="position: relative; z-index: 10;">
+
+    <!-- Contador regresivo elegante -->
+    <div class="countdown-container">
+      <h3 class="countdown-title">Faltan para el gran día</h3>
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <div class="countdown-value" id="countdown-days">20</div>
+          <div class="countdown-label">Días</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="countdown-hours">14</div>
+          <div class="countdown-label">Horas</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="countdown-minutes">00</div>
+          <div class="countdown-label">Minutos</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="countdown-seconds">00</div>
+          <div class="countdown-label">Segundos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carrusel de imágenes elegante -->
+    <div class="carousel-container">
+      <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="matias1.jpg">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Nuestro pequeño Mati</h5>
+              <p>Tan guapo como siempre</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="matias2.jpg" class="d-block w-100" alt="Safari">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Descansando un momento</h5>
+              <p>Tomando energía para seguir jugando</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="matias3.jpg" class="d-block w-100" alt="Familia">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Booooooo!</h5>
+              <p>Mati con un lindo disfraz</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="matias4.jpg" class="d-block w-100" alt="Bautizo">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Lindo bebé</h5>
+              <p>Celebrando al pequeño Mati</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title"><i class="fas fa-heart"></i> Mensaje de los Padres</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <h4 class="mb-3"><i class="fas fa-female me-2"></i>De Mamá, Meilyn Arisai Trujano Rubio </h4>
+          <p>"Con amor y fe, celebramos el primer paso espiritual de nuestro pequeño Matias. Es un honor compartir este momento tan especial con quienes más queremos."</p>
+        </div>
+        <div class="col-md-6">
+          <h4 class="mb-3"><i class="fas fa-male me-2"></i>De Papá, Roberto Zárate Garnica</h4>
+          <p>"Con orgullo y alegría, invitamos a nuestros seres queridos a compartir el bautizo de nuestro hijo Matias, un día lleno de bendiciones y amor."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title"><i class="fas fa-calendar-day"></i> Detalles del Evento</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong><i class="fas fa-calendar me-2"></i>Fecha:</strong> 03 de Enero de 2026</li>
+        <li class="list-group-item"><strong><i class="fas fa-clock me-2"></i>Misa:</strong> 13:00 p.m.</li>
+        <li class="list-group-item"><strong><i class="fas fa-church me-2"></i>Lugar:</strong> C. 10 de Mayo 12, 56940, Santiago Cuauhtenco. México. </li>
+        <li class="list-group-item"><strong><i class="fas fa-utensils me-2"></i>Recepción:</strong> 14:30, Carretera Amecameca, Camino Real a Sta Isabel Chalma S/N, Amecameca De Juárez, México </li>
+        <li class="list-group-item"><strong><i class="fas fa-users me-2"></i>Padrinos:</strong> Eloy Vázquez Garnica y Alexa Fernanda Vázquez Garnica</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title"><i class="fas fa-bible"></i> Versículo Especial</h2>
+      <blockquote class="blockquote">
+        <p>"Dejad que los niños vengan a mí, y no se lo impidáis; porque de los tales es el reino de Dios."</p>
+        <footer class="blockquote-footer">Mateo 19:14</footer>
+      </blockquote>
+    </div>
+
+    <div class="section">
+  <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Ubicación</h2>
+  <div class="map-container">
+    <div class="ratio ratio-16x9">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.0204300559863!2d-98.75458482511105!3d19.150582982069412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce3ca473e99cbb%3A0x1b5e5e3be1fbfa4a!2sCasa%20de%20retiros%20Agua%20Viva%2C%20Dominicos!5e0!3m2!1ses-419!2smx!4v1763589977185!5m2!1ses-419!2smx" 
+        width="600" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+    <div class="section">
+      <h2 class="section-title"><i class="fas fa-hands-helping"></i> Menciones Especiales</h2>
+      <p class="mb-4">Agradecemos especialmente a estas personas que han sido pilares en la vida de Matias:</p>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card card-safari h-100">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Miriam">
+            <div class="card-body text-center">
+              <h5 class="card-title">Miriam Garnica Martínez</h5>
+              <p class="card-text text-muted">Abuelita y compañera de aventuras</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card card-safari h-100">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Abuela">
+            <div class="card-body text-center">
+              <h5 class="card-title">Mamá de Mei</h5>
+              <p class="card-text text-muted">Abuelita (        )</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="section">
+  <h2 class="section-title"><i class="fas fa-gift"></i> Mesa de Regalos</h2>
+  <p class="mb-4">Su presencia es el mejor regalo, pero si desean obsequiar algo a Matias, estas son algunas opciones:</p>
+  <div class="row text-center">
+    
+    <!-- Mercado Libre -->
+    <div class="col-md-4 mb-4">
+      <div class="p-4 rounded" style="background: rgba(200, 230, 201, 0.3);">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.mxGA9mvDQrCzlVZafHtIHQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Mercado Libre" style="width:80px;">
+        <h5 class="mt-3">Mercado Libre</h5>
+        <a href="https://www.mercadolibre.com.mx/mesaderegalos/matias2025" target="_blank" class="btn btn-safari mt-2">Ver opciones</a>
+      </div>
+    </div>
+
+    <!-- Sugerencia de regalos -->
+    <div class="col-md-4 mb-4">
+      <div class="p-4 rounded" style="background: rgba(200, 230, 201, 0.3);">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.ucjtQjdB-PU5ETclyOcnfQHaHa?w=626&h=626&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Regalo" style="width:80px;">
+        <h5 class="mt-3">Sugerencia de regalos</h5>
+        <!-- Botón que abre el modal -->
+        <button type="button" class="btn btn-safari mt-2" data-bs-toggle="modal" data-bs-target="#giftSuggestionsModal">
+          Ver lista
+        </button>
+      </div>
+    </div>
+
+    <!-- Amazon -->
+    <div class="col-md-4 mb-4">
+      <div class="p-4 rounded" style="background: rgba(200, 230, 201, 0.3);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/512px-Amazon_icon.svg.png" alt="Amazon" style="width:80px;">
+        <h5 class="mt-3">Amazon</h5>
+        <a href="https://www.amazon.com.mx/hz/wishlist/ls/ABC123XYZ" target="_blank" class="btn btn-safari mt-2">Ver wishlist</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal de sugerencias de regalos -->
+<div class="modal fade" id="giftSuggestionsModal" tabindex="-1" aria-labelledby="giftSuggestionsLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      
+      <!-- Encabezado -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="giftSuggestionsLabel">🎁 Sugerencias de Regalos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      
+      <!-- Cuerpo con lista -->
+      <div class="modal-body">
+        <ul class="list-group text-start">
+          <li class="list-group-item">Ropita para bebé</li>
+          <li class="list-group-item">Juguetes didácticos</li>
+          <li class="list-group-item">Libros infantiles</li>
+          <li class="list-group-item">Tarjeta de regalo Amazon/Mercado Libre</li>
+          <li class="list-group-item">Accesorios para cuarto del bebé</li>
+        </ul>
+      </div>
+      
+      <!-- Pie -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-safari" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+   <div class="section text-center">
+  <h2 class="section-title"><i class="fas fa-user-check"></i> Confirmación de Asistencia</h2>
+  <p>Por favor, confirma tu asistencia antes del 30 de Diciembre de 2025</p>
+  
+  <!-- Formulario para nombre -->
+  <form id="attendanceForm" class="mt-3">
+    <div class="mb-3">
+      <input type="text" id="guestName" class="form-control text-center" placeholder="Escribe tu nombre" required>
+    </div>
+    <button type="submit" class="btn btn-safari btn-lg">
+      <i class="fas fa-check-circle me-2"></i>Confirmar Asistencia
+    </button>
+  </form>
+</div>
+
+<script>
+  document.getElementById("attendanceForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // evita recargar la página
+    
+    // Número de WhatsApp en formato internacional (ejemplo México)
+    const phoneNumber = "5543896429"; // <-- cámbialo por tu número real
+    
+    // Obtener nombre del invitado
+    const guestName = document.getElementById("guestName").value.trim();
+    
+    // Mensaje personalizado
+    const message = `Hola, soy ${guestName} y confirmo mi asistencia al evento de Matias.`;
+    
+    // Crear enlace de WhatsApp
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    
+    // Abrir WhatsApp en nueva pestaña
+    window.open(whatsappLink, "_blank");
+  });
+</script>
+
+  <footer>
+    <div class="container">
+      <h3 class="mb-3">Con cariño, Raúl & Valeria</h3>
+      <p>Que cada día de tu vida esté lleno de bendiciones y alegrías</p>
+      <div class="mt-4">
+        <a href="#" class="text-light me-3"><i class="fab fa-whatsapp fa-2x"></i></a>
+        <a href="#" class="text-light me-3"><i class="fas fa-envelope fa-2x"></i></a>
+        <a href="#" class="text-light"><i class="fas fa-phone fa-2x"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Configurar la fecha del evento
+    const eventDate = new Date('January 03, 2026 13:00:00').getTime();
+    
+    // Actualizar el contador cada segundo
+    const countdownFunction = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      
+      // Cálculos de tiempo
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      // Mostrar el resultado
+      document.getElementById("countdown-days").textContent = days.toString().padStart(2, '0');
+      document.getElementById("countdown-hours").textContent = hours.toString().padStart(2, '0');
+      document.getElementById("countdown-minutes").textContent = minutes.toString().padStart(2, '0');
+      document.getElementById("countdown-seconds").textContent = seconds.toString().padStart(2, '0');
+      
+      // Si el contador termina
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown-days").textContent = "00";
+        document.getElementById("countdown-hours").textContent = "00";
+        document.getElementById("countdown-minutes").textContent = "00";
+        document.getElementById("countdown-seconds").textContent = "00";
+      }
+    }, 1000);
+
+    // Control de música
+    const musicControl = document.getElementById('musicControl');
+    const safariMusic = document.getElementById('safariMusic');
+    let musicPlaying = false;
+
+    musicControl.addEventListener('click', function() {
+      if (musicPlaying) {
+        safariMusic.pause();
+        musicControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        musicPlaying = false;
+      } else {
+        safariMusic.play();
+        musicControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+        musicPlaying = true;
+      }
+    });
+
+    // Funciones de interacción
+    function showDetails() {
+      alert("Para más información, puedes contactarnos a través de los medios proporcionados al final de la página.");
+    }
+
+    function confirmAttendance() {
+      alert("Gracias por confirmar tu asistencia. Te esperamos en este día tan especial.");
+    }
+
+    // Inicialización al cargar la página
+    window.onload = function() {
+      // Iniciar música (requiere interacción del usuario)
+      setTimeout(() => {
+        musicControl.click();
+      }, 1000);
+    };
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
